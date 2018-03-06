@@ -1,50 +1,45 @@
 <template>
-<div class="maclasse">
-   <form @submit.prevent="onSubmit()">
-  <h2>poll.title</h2>
-  <div
-  v-for="(option, index) in poll.options" 
-  :key="index"  class="form-group">
-    <input type="radio" 
-    value="option.text"
-    v-model="poll.checked"
-    required>
-  <input type="submit">
+  <form @submit.prevent="onSubmit()">
+    <h2>{{poll.title}}</h2>
+    <div
+    v-for="(option, index) in poll.options" 
+    :key="index"  class="form-group">
+      <input type="radio" 
+      name="poll"
+      :value="option.id"
+      v-model="picked">
+    <label for="">{{option.text}}</label>
+    </div>
+    <input type="submit">
   </form>
-</div>
 </template>
 
 <script>
 export default {
-    name:'answer',
-  data () {
+  name:'answer',
+  data(){
     return {
+      picked: null,
       poll: {
-      title: "Que boire au petit dej ?",
-      options: [
-        {text: "Thé", checked: false},
-        {text: "Café", checked: false},
-        {text: "Jus d'orange", checked: false},
-        {text: "Rien, je suis en retard", checked: false},
-  ]
-}
+          title: "Que boire au petit dej ?",
+          options: [
+            {id: 1, text: "Thé"},
+            {id: 2, text: "Café"},
+            {id: 3, text: "Jus d'orange"},
+            {id: 4, text: "Rien, je suis en retard"},
+          ]
+        }
     }
   },
-  
-    methods: {
+  methods:{
     onSubmit(){
-      
-        console.log(this.poll.options)
-      
-      
-     }
+      console.log(this.picked)
     }
+  }
+
 }
 </script>
+
 <style>
-.maclasse{
-  border: 1px solid;
-  margin: auto;
-  width: 400px;
-}
+
 </style>

@@ -80,6 +80,8 @@
         </a>
       </li>
     </ul>
+    <button @click="onClick">Click me !</button>
+    <button @click="onClickClock">Clock me !</button>
   </div>
 </template>
 
@@ -89,6 +91,14 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    onClick(){
+      this.$router.push({name: 'testy', params: {id: "helloWorld"}})
+    },
+    onClickClock(){
+      this.$router.push({name: 'testy', params: {id: "tata"}})
     }
   }
 }
